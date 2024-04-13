@@ -7,7 +7,7 @@ import {
     get_token,
     verify_token,
     refresh_token,
-} from "./auth_utils.js";
+} from "../../glue/auth_utils.js";
 
 // the test user: "testuser", "testpassword", "testemail@gmail.com"
 

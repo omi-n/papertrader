@@ -44,7 +44,7 @@ async function _refresh_token(refresh_token, base_url = GLOBAL_BASE_URL) {
     const response = await fetch(`${base_url}/auth/token/refresh/`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ token: refresh_token }),
+        body: JSON.stringify({ refresh: refresh_token }),
     });
     const data = await response.json();
     return data;
@@ -158,4 +158,7 @@ export {
     verify_token,
     refresh_token,
     api_sign_up,
+    _verify_token,
+    _refresh_token,
+    GLOBAL_BASE_URL,
 };
