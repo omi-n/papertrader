@@ -55,7 +55,7 @@ async function refresh_token(base_url = GLOBAL_BASE_URL) {
     // refresh the token
     const response = await _refresh_token(refresh_token, base_url);
     if (response.access) {
-        setCookie("access_token", response.access, 1);
+        setCookie("access_token", response.access, 30);
     } else {
         return { error: response };
     }
@@ -92,8 +92,8 @@ async function log_in(username, password, base_url = GLOBAL_BASE_URL) {
     // log in the user
     const data = await get_token(username, password, base_url);
     if (data.access) {
-        setCookie("access_token", data.access, 1);
-        setCookie("refresh_token", data.refresh, 1);
+        setCookie("access_token", data.access, 30);
+        setCookie("refresh_token", data.refresh, 60);
     } else {
         return { error: data };
     }
