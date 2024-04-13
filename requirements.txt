@@ -1,0 +1,5 @@
+Django
+sqlalchemy
+fastapi
+yfinance
+djangorestframework
