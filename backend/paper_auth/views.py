@@ -33,6 +33,11 @@ class SignUpViewSet(APIView):
         password = request.data.get("password")
         email = request.data.get("email")
 
+        # stringify
+        username = str(username)
+        password = str(password)
+        email = str(email)
+
         if username is None or password is None:
             return Response(
                 {"error": "Please provide both username and password"}, status="400"
@@ -41,8 +46,4 @@ class SignUpViewSet(APIView):
             user = User.objects.create_user(username, email, password)
             user.save()
             # return the access and refresh tokens
-            token_info = requests.post(
-                "http://localhost:8000/auth/token/",
-                data={"username": username, "password": password},
-            )
-            return Response(token_info.json())
+            return Response({"info": "User created successfully"})
