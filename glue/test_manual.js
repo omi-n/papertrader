@@ -13,19 +13,19 @@ async function test_api_sign_up() {
         "testpassword",
         "testemail@gmail.com"
     );
-    console.log(response);
+    console.log("signup: ", response);
 }
 
 async function test_verify_token() {
     const tokens = await get_token("testuser", "testpassword");
     const response = await _verify_token(tokens.access, GLOBAL_BASE_URL);
-    console.log(response);
+    console.log("verify: ", response);
 }
 
 async function test_refresh_token() {
     const tokens = await get_token("testuser", "testpassword");
     const response = await _refresh_token(tokens.refresh, GLOBAL_BASE_URL);
-    console.log(response);
+    console.log("refresh: ", response);
 }
 
 test_api_sign_up();

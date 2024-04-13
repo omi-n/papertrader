@@ -28,8 +28,10 @@ async function _verify_token(access_token, base_url = GLOBAL_BASE_URL) {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ token: access_token }),
     });
-    const data = await response.json();
-    return data;
+    if (response.status === 200) {
+        return true;
+    }
+    return false;
 }
 
 async function verify_token(base_url = GLOBAL_BASE_URL) {
@@ -143,7 +145,7 @@ async function is_logged_in() {
         return false;
     }
     const data = await verify_token();
-    return data.code === 200;
+    return data;
 }
 
 export {
