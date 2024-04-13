@@ -3,3 +3,4 @@ sqlalchemy
 fastapi
 yfinance
 djangorestframework
+djangorestframework-simplejwt
