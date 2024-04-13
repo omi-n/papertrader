@@ -1,4 +1,3 @@
-# copied from documentation: https://www.django-rest-framework.org/tutorial/quickstart/
 from django.contrib.auth.models import Group, User
 from rest_framework import permissions, viewsets
 from paper_auth.serializers import GroupSerializer, UserSerializer
