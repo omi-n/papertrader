@@ -1,4 +1,5 @@
 from django.contrib.auth.models import Group, User
+import django
 from rest_framework import permissions, viewsets
 from paper_auth.serializers import GroupSerializer, UserSerializer
 from rest_framework.response import Response
@@ -43,7 +44,10 @@ class SignUpViewSet(APIView):
                 {"error": "Please provide both username and password"}, status="400"
             )
         else:
-            user = User.objects.create_user(username, email, password)
-            user.save()
+            try:
+                user = User.objects.create_user(username, email, password)
+                user.save()
+            except django.db.utils.IntegrityError:
+                return Response({"error": "Username already exists"}, status="400")
             # return the access and refresh tokens
             return Response({"info": "User created successfully"})
