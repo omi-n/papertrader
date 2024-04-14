@@ -16,6 +16,11 @@ async function test_api_sign_up() {
     console.log("signup: ", response);
 }
 
+async function test_get_token() {
+    const response = await get_token("testuser", "testpassword");
+    console.log("get_token: ", response);
+}
+
 async function test_verify_token() {
     const tokens = await get_token("testuser", "testpassword");
     const response = await _verify_token(tokens.access, GLOBAL_BASE_URL);
@@ -28,6 +33,7 @@ async function test_refresh_token() {
     console.log("refresh: ", response);
 }
 
-test_api_sign_up();
+// test_api_sign_up();
 test_verify_token();
 test_refresh_token();
+test_get_token();
