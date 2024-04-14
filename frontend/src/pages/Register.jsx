@@ -9,7 +9,7 @@ function Register() {
   const [error, setError] = useState(null);
 
   const handleSignup = async () => {
-    const data = await sign_up(username, email, password);
+    const data = await sign_up(username, password, email);
   };
 
   return (

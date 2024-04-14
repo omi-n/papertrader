@@ -4,3 +4,4 @@ fastapi
 yfinance
 djangorestframework
 djangorestframework-simplejwt
+django-cors-headers
