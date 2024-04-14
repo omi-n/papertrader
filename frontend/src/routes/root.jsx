@@ -31,6 +31,9 @@ export default function Root() {
           <nav>
             <ul>
               <li>
+                <a href={`/Home/`}>Home</a>
+              </li>
+              <li>
                 <a href={`/Sign Up/`}>Sign Up</a>
               </li>
               <li>
