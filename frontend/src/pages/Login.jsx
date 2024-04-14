@@ -1,18 +1,15 @@
 import { useState } from "react"
 import "./../styles/Login.css"
-import { log_in, get_access_token, get_refresh_token, verify_token } from "../../../glue/auth_utils";
+import { log_in, verify_token, get_access_token, get_refresh_token, is_logged_in } from "../../../glue/auth_utils";
+import { setCookie, getCookie } from "../../../glue/cookie_utils";
 
 function Login() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
 
-    function handleLogin(e) {
+    async function handleLogin(e) {
         e.preventDefault();
-        const data = log_in(email, password);
-        console.log("data: ", data);
-        console.log("Refresh: ", get_refresh_token());
-        console.log("Access: ", get_access_token());
-        console.log("Verify: ", verify_token());
+        const data = await log_in(email, password);
     }
     return(
         <>
