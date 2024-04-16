@@ -56,5 +56,5 @@ class SignUpViewSet(APIView):
                 )
             # return the access and refresh tokens
             return Response(
-                {"info": "User created successfully"}, status=status.HTTP_201_CREATED
+                {"info": "User created successfully"}, status=status.HTTP_200_OK
             )
