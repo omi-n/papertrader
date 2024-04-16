@@ -4,6 +4,7 @@ from rest_framework import permissions, viewsets
 from paper_auth.serializers import GroupSerializer, UserSerializer
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework import status
 from django.contrib.auth import authenticate, login, logout
 import requests
 
@@ -41,13 +42,19 @@ class SignUpViewSet(APIView):
 
         if username is None or password is None:
             return Response(
-                {"error": "Please provide both username and password"}, status="400"
+                {"error": "Please provide both username and password"},
+                status=status.HTTP_400_BAD_REQUEST,
             )
         else:
             try:
                 user = User.objects.create_user(username, email, password)
                 user.save()
             except django.db.utils.IntegrityError:
-                return Response({"error": "Username already exists"}, status="400")
+                return Response(
+                    {"error": "Username already exists"},
+                    status=status.HTTP_400_BAD_REQUEST,
+                )
             # return the access and refresh tokens
-            return Response({"info": "User created successfully"})
+            return Response(
+                {"info": "User created successfully"}, status=status.HTTP_201_CREATED
+            )
