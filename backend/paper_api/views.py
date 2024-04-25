@@ -37,9 +37,25 @@ class FinanceAPIView(APIView):
         return {"data": "this is a base endpoint"}
 
 
-class YFinanceAPIView(APIView):
-    def get(self, request, ticker, time):
+class YFinanceHistoryView(APIView):
+    def get(self, request, ticker, time="1m"):
         ticker = yf.Ticker(ticker)
         history = ticker.history(period=time)
         metadata = ticker.history_metadata
         return Response({"history": history, "metadata": metadata})
+
+
+class YFinanceFinancialsView(APIView):
+    def get(self, request, ticker):
+        ticker = yf.Ticker(ticker)
+        financials = {
+            "income_statement": ticker.income_stmt.to_json(),
+            "balance_sheet": ticker.balance_sheet.to_json(),
+            "cash_flow": ticker.cash_flow.to_json(),
+            "earnings_dates": ticker.earnings_dates.to_json(),
+            "quarterly_income": ticker.quarterly_income_stmt.to_json(),
+            "quarterly_balance": ticker.quarterly_balance_sheet.to_json(),
+            "quarterly_cash_flow": ticker.quarterly_cash_flow.to_json(),
+        }
+
+        return Response(financials)
