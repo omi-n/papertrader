@@ -38,7 +38,7 @@ class FinanceAPIView(APIView):
 
 
 class YFinanceHistoryView(APIView):
-    def get(self, request, ticker, time="1m"):
+    def get(self, request, ticker, time="1d"):
         ticker = yf.Ticker(ticker)
         history = ticker.history(period=time)
         metadata = ticker.history_metadata
