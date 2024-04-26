@@ -4,6 +4,9 @@ import './index.css'
 import Login from './pages/Login.jsx'
 import Register from './pages/Register.jsx'
 import Home from './pages/Home.jsx'
+import Profile from './pages/Profile.jsx'
+import Portfolio from './pages/Portfolio.jsx'
+import Logout from './pages/Logout.jsx'
 import {
   createBrowserRouter,
   RouterProvider,
@@ -33,6 +36,18 @@ const router = createBrowserRouter([
       {
         path: "Home",
         element: <Home />,
+      },
+      {
+        path: "Profile",
+        element: <Profile />,
+      },
+      {
+        path: "Portfolio",
+        element: <Portfolio />,
+      },
+      {
+        path: "Log Out",
+        element: <Logout />,
       }
     ],
   },

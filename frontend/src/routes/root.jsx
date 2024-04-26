@@ -1,10 +1,11 @@
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
-import { is_logged_in } from "../../../glue/auth_utils";
+import { is_logged_in, log_out } from "../../../glue/auth_utils";
 
 export default function Root() {
   const location = useLocation();
   const [auth, setAuth] = useState(false);
+  const navigate = useNavigate();
 
   useEffect(() => {
       const loginStatus = async () =>{
@@ -66,7 +67,15 @@ export default function Root() {
             <li>
               <a href={`/Home/`}>Home</a>
             </li>
-            <li>Logged In</li>
+            <li>
+              <a href={`/Profile/`}>Profile</a>
+            </li>
+            <li>
+              <a href={`/Portfolio/`}>Portfolio</a>
+            </li>
+            <li>
+            <a href={`/Log Out/`}>Log Out</a>
+            </li>
           </ul>
           ) }
           </nav>
