@@ -6,6 +6,7 @@ from rest_framework import status
 from rest_framework.views import APIView
 from rest_framework.response import Response
 import yfinance as yf
+import json
 
 
 class TickerViewSet(viewsets.ModelViewSet):
@@ -53,9 +54,12 @@ class YFinanceFinancialsView(APIView):
             "balance_sheet": ticker.balance_sheet.to_json(),
             "cash_flow": ticker.cash_flow.to_json(),
             "earnings_dates": ticker.earnings_dates.to_json(),
-            "quarterly_income": ticker.quarterly_income_stmt.to_json(),
-            "quarterly_balance": ticker.quarterly_balance_sheet.to_json(),
-            "quarterly_cash_flow": ticker.quarterly_cash_flow.to_json(),
+            # "quarterly_income": ticker.quarterly_income_stmt.to_json(),
+            # "quarterly_balance": ticker.quarterly_balance_sheet.to_json(),
+            # "quarterly_cash_flow": ticker.quarterly_cash_flow.to_json(),
         }
+
+        for key, value in financials.items():
+            financials[key] = json.loads(value)
 
         return Response(financials)
