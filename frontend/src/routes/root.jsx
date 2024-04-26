@@ -1,6 +1,25 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { is_logged_in } from "../../../glue/auth_utils";
 
 export default function Root() {
+  const location = useLocation();
+  const [auth, setAuth] = useState(false);
+
+  useEffect(() => {
+      const loginStatus = async () =>{
+        try{
+          const value = await is_logged_in();
+          setAuth(value);
+        }
+        catch(error){
+          console.error("Error getting logged in:", error);
+        }
+      }
+      loginStatus()
+  }, [location]);
+
+    console.log("Root Auth:", auth);
     return (
       <>
         <div id="sidebar">
@@ -29,6 +48,8 @@ export default function Root() {
             </form>
           </div>
           <nav>
+          {!auth ? 
+          (
             <ul>
               <li>
                 <a href={`/Home/`}>Home</a>
@@ -39,7 +60,15 @@ export default function Root() {
               <li>
                 <a href={`/Login/`}>Login</a>
               </li>
-            </ul>
+            </ul>) :
+          (
+            <ul>
+            <li>
+              <a href={`/Home/`}>Home</a>
+            </li>
+            <li>Logged In</li>
+          </ul>
+          ) }
           </nav>
         </div>
         <div id="detail">
