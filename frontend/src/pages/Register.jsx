@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import "./../styles/Authentication.css";
 import { sign_up } from '../../../glue/auth_utils';
 
@@ -7,9 +8,11 @@ function Register() {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState(null);
+  const navigate = useNavigate();
 
   const handleSignup = async () => {
     const data = await sign_up(username, password, email);
+    navigate("/");
   };
 
   return (
