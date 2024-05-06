@@ -1,6 +1,7 @@
 import requests
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
+import os
 
 screener = pd.read_csv("paper_api/nasdaq_screener.csv")
 
@@ -28,5 +29,5 @@ def populate_ticker(tick):
     )
 
 
-with ThreadPoolExecutor(max_workers=16) as executor:
+with ThreadPoolExecutor(max_workers=os.cpu_count()) as executor:
     executor.map(populate_ticker, iters)
