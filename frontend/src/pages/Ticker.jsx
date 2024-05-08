@@ -91,13 +91,13 @@ function Ticker() {
     };
 
     const handleBuyClick = (ticker) => {
-
+        navigate(`/buy/${ticker}`);
     };
 
     const handleSellClick = (ticker) => {
 
     };
-    
+
     return (
         <div>
             <h1>Tickers</h1>
@@ -119,8 +119,8 @@ function Ticker() {
                                 <div>
                                     <p>Ticker: {result.ticker}</p>
                                     <p>Opening Price: {result.openingPrice !== undefined ? result.openingPrice : "Loading..."}</p>
-                                    <p><button onClick={() => handleBuyClick(result)}>Buy</button></p>
-                                    <p><button onClick={() => handleSellClick(result)}>Sell</button></p>
+                                    <p><button onClick={() => handleBuyClick(ticker.ticker)}>Buy</button></p>
+                                    <p><button onClick={() => handleSellClick(ticker.ticker)}>Sell</button></p>
                                     <p><button onClick={() => handleMoreInfoClick(result.ticker)}>More Info</button></p>
                                 </div>
                             </div>
@@ -131,8 +131,8 @@ function Ticker() {
                                 <div>
                                     <p>Ticker: {ticker.ticker}</p>
                                     <p>Opening Price: {openingPrices[ticker.ticker] !== undefined ? openingPrices[ticker.ticker] : "Loading..."}</p>
-                                    <p><button onClick={() => handleBuyClick(ticker)}>Buy</button></p>
-                                    <p><button onClick={() => handleSellClick(ticker)}>Sell</button></p>
+                                    <p><button onClick={() => handleBuyClick(ticker.ticker)}>Buy</button></p>
+                                    <p><button onClick={() => handleSellClick(ticker.ticker)}>Sell</button></p>
                                     <p><button onClick={() => handleMoreInfoClick(ticker.ticker)}>More Info</button></p>
                                 </div>
                             </div>

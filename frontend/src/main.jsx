@@ -58,6 +58,14 @@ const router = createBrowserRouter([
         element: <TickerDetails />,
       },
       {
+        path:"/buy/:tickerSymbol",
+        element: <Buy />,
+      },
+      {
+        path:"/sell/:tickerSymbol",
+        element: <Sell />,
+      },
+      {
         path: "Log Out",
         element: <Logout />,
       }
