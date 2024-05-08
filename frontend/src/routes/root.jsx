@@ -74,6 +74,9 @@ export default function Root() {
               <a href={`/Portfolio/`}>Portfolio</a>
             </li>
             <li>
+              <a href={`/Ticker/`}>Tickers</a>
+            </li>
+            <li>
             <a href={`/Log Out/`}>Log Out</a>
             </li>
           </ul>

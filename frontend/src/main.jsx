@@ -7,12 +7,16 @@ import Home from './pages/Home.jsx'
 import Profile from './pages/Profile.jsx'
 import Portfolio from './pages/Portfolio.jsx'
 import Logout from './pages/Logout.jsx'
+import Ticker from './pages/Ticker.jsx'
+import Buy from './pages/Buy.jsx'
+import Sell from './pages/Sell.jsx'
 import {
   createBrowserRouter,
   RouterProvider,
 } from "react-router-dom";
 import Root from "./routes/root";
 import ErrorPage from "./pages/ErrorPage.jsx";
+import TickerDetails from './pages/TickerDetails.jsx'
 
 const router = createBrowserRouter([
   {
@@ -44,6 +48,14 @@ const router = createBrowserRouter([
       {
         path: "Portfolio",
         element: <Portfolio />,
+      },
+      {
+        path: "Ticker",
+        element: <Ticker />,
+      },
+      {
+        path:"/tickerdetails/:tickerSymbol",
+        element: <TickerDetails />,
       },
       {
         path: "Log Out",
