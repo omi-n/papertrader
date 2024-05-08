@@ -29,5 +29,5 @@ def populate_ticker(tick):
     )
 
 
-with ThreadPoolExecutor(max_workers=os.cpu_count()) as executor:
+with ThreadPoolExecutor(max_workers=8) as executor:
     executor.map(populate_ticker, iters)
