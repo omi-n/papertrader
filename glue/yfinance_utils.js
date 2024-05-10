@@ -1,7 +1,7 @@
 const GLOBAL_BASE_URL = "http://localhost:8000";
 
-async function get_tickers() {
-    const response = await fetch(`${GLOBAL_BASE_URL}/api/tickers/`);
+async function get_tickers(page) {
+    const response = await fetch(`${GLOBAL_BASE_URL}/api/tickers/?page=${page}`);
     if (!response.ok) {
         return { error: response };
     }
