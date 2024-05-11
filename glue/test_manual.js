@@ -33,7 +33,7 @@ async function test_refresh_token() {
     console.log("refresh: ", response);
 }
 
-// test_api_sign_up();
+test_api_sign_up();
 test_verify_token();
 test_refresh_token();
 test_get_token();

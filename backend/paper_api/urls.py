@@ -6,6 +6,9 @@ from paper_api.views import (
     APIsView,
     YFinanceHistoryView,
     YFinanceFinancialsView,
+    UserBalanceView,
+    UserTransactionView,
+    UserStockView,
 )
 
 # TODO:
@@ -43,4 +46,7 @@ urlpatterns = [
         YFinanceFinancialsView.as_view(),
         name="yfinance",
     ),
+    path("user/balance/", UserBalanceView.as_view(), name="user_balance"),
+    path("user/transaction/", UserTransactionView.as_view(), name="user_transaction"),
+    path("user/stock/", UserStockView.as_view(), name="user_stock"),
 ]
