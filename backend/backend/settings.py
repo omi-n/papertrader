@@ -140,6 +140,6 @@ REST_FRAMEWORK = {
 CORS_ALLOW_ALL_ORIGINS = True
 
 SIMPLE_JWT = {
-    "ACCESS_TOKEN_LIFETIME": timedelta(months=1),
-    "REFRESH_TOKEN_LIFETIME": timedelta(months=3),
+    "ACCESS_TOKEN_LIFETIME": timedelta(weeks=4),
+    "REFRESH_TOKEN_LIFETIME": timedelta(weeks=12),
 }
