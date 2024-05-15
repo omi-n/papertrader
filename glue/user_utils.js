@@ -105,3 +105,8 @@ async function sell_stock(ticker, quantity, price) {
     const data = await response.json();
     return data;
 }
+
+export {
+    get_balance,
+    set_balance
+};
