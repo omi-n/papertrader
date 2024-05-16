@@ -95,7 +95,7 @@ function Ticker() {
     };
 
     const handleSellClick = (ticker) => {
-
+        navigate(`/sell/${ticker}`);
     };
 
     return (

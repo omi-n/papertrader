@@ -20,7 +20,7 @@ export default function Root() {
       loginStatus()
   }, [location]);
 
-    console.log("Root Auth:", auth);
+    //console.log("Root Auth:", auth);
     return (
       <>
         <div id="sidebar">

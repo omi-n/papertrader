@@ -7,13 +7,15 @@ function TickerDetails() {
     const [tickerData, setTickerData] = useState(null);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
-
+    const [openingPrice, setOpeningPrice] = useState(0);
+    
     useEffect(() => {
         const fetchTickerData = async () => {
             try {
                 // Fetch additional data for the ticker symbol
                 const data = await get_ticker_data(tickerSymbol);
                 setTickerData(data);
+                setOpeningPrice(data.history.Open[0]);
                 setLoading(false);
             } catch (error) {
                 setError(error.message);
@@ -37,7 +39,7 @@ function TickerDetails() {
             <h1>Ticker Details for {tickerSymbol}</h1>
             {/* Render detailed information about the ticker */}
             {/* Example: Display historical data, charts, company information, etc. */}
-            {/* Example: <p>Opening Price: {tickerData.openingPrice}</p> */}
+            <p>Opening Price = {openingPrice}</p>
         </div>
     );
 }
