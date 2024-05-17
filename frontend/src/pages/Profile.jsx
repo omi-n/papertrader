@@ -1,13 +1,15 @@
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { verify_token, refresh_token, is_logged_in, log_out } from "../../../glue/auth_utils";
-import { get_balance, set_balance } from "../../../glue/user_utils";
+import { get_balance, get_transactions, set_balance, get_stocks } from "../../../glue/user_utils";
 
 function Profile() {
     const [balance, setBalanceState] = useState(0);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showAddButtons, setShowAddButtons] = useState(false);
+    const [stocks, setStocks] = useState([]);
+    const [transactions, setTransactions] = useState([]);
     const navigate = useNavigate();
 
     useEffect(() => {
@@ -29,10 +31,16 @@ function Profile() {
                         }
                     }
                     const result = await get_balance();
+                    // get stocks
+                    const s = await get_stocks();
+                    // get transactions
+                    const t = await get_transactions();
                     if (result.error) {
                         setError("Error fetching balance");
                     } else {
                         setBalanceState(result.balance);
+                        setStocks(s);
+                        setTransactions(t);
                     }
                 }
             } catch (error) {
@@ -80,9 +88,23 @@ function Profile() {
         setShowAddButtons(prevState => !prevState);
     };
 
+    const uniqueStocks = stocks.reduce((acc, stock) => {
+        const { ticker } = stock;
+        if (!acc[ticker]) {
+          acc[ticker] = { ...stock, count: 0 };
+        }
+        acc[ticker].count += 1;
+        return acc;
+      }, {});
+      
+    const uniqueStocksArray = Object.values(uniqueStocks);
+    //console.log(transactions);
+    //console.log("All stocks:", stocks);
+    //console.log("Unique:", uniqueStocksArray);
+
     return (
         <>
-            <div>Profile</div>
+            <h1>Profile</h1>
             <div>
                 <div>
                     <span>Current Balance: {balance}</span>
@@ -99,6 +121,30 @@ function Profile() {
             </div>
             {loading && <div>Loading...</div>}
             {error && <div>{error}</div>}
+            <h1>Stocks</h1>
+            {stocks.length === 0 ? (
+                // Render this block when there are no transactions
+                <div>No Stocks available</div>
+            ) : (
+                // Render this block when there are transactions
+                uniqueStocksArray.map((stock, index) => (
+                <div key={index}>
+                    <p>{stock.ticker}: {stock.count} shares owned</p>
+                </div>
+                ))
+            )}
+            <h1>Transactions</h1>
+            {transactions.length === 0 ? (
+                // Render this block when there are no transactions
+                <div>No transactions available</div>
+            ) : (
+                // Render this block when there are transactions
+                transactions.map((transac, index) => (
+                <div key={index}>
+                    <p>You bought {transac.ticker}: priced at ${transac.price}</p>
+                </div>
+                ))
+            )}
         </>
     );
 }

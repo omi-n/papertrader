@@ -38,7 +38,7 @@ function Buy(){
         try {
             const data = await buy_stock(tickerSymbol, shares, openingPrice);
             console.log("Purchase:", data);
-            //navigate("/Profile");
+            navigate("/Profile");
         } catch (error) {
             console.error("Error during purchase:", error.message);
             setError("Purchase failed. Please try again.");
