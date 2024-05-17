@@ -141,7 +141,8 @@ function Profile() {
                 // Render this block when there are transactions
                 transactions.map((transac, index) => (
                 <div key={index}>
-                    <p>You bought {transac.ticker}: priced at ${transac.price}</p>
+                    {transac.transaction_type === 'buy' ? (<p>You bought {transac.amount} shares of {transac.ticker} priced at ${transac.price} a share.</p>)
+                    : (<p>You sold {transac.amount} shares of {transac.ticker} at ${transac.price} a share.</p>)}
                 </div>
                 ))
             )}
