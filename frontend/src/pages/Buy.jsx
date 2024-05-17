@@ -36,7 +36,7 @@ function Buy(){
         e.preventDefault();
         console.log("Purchase");
         try {
-            const data = await buy_stock(ticker, shares, openingPrice);
+            const data = await buy_stock(tickerSymbol, shares, openingPrice);
             console.log("Purchase:", data);
             //navigate("/Profile");
         } catch (error) {
