@@ -105,7 +105,6 @@ function Ticker() {
                 <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Enter ticker symbol" />
                 <button onClick={handleSearch}>Search</button>
             </div>
-            <p><button onClick={nextPage}>Next Page</button></p>
             {searchError && <div>Error: {searchError}</div>}
             {loading && <div>Loading...</div>}
             {error && <div>Error: {error}</div>}
@@ -137,9 +136,9 @@ function Ticker() {
                                 </div>
                             </div>
                         ))
-                    )}
+                    )} <div><button onClick={nextPage}>Next Page</button></div>
                 </div>
-            ))}
+            ))} 
         </div>
     );
 }
