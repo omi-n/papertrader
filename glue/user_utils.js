@@ -74,7 +74,7 @@ async function buy_stock(ticker, quantity, price) {
         },
         body: JSON.stringify({
             ticker: ticker,
-            quantity: quantity,
+            amount: quantity,
             price: price,
         }),
     });
@@ -95,7 +95,7 @@ async function sell_stock(ticker, quantity, price) {
         },
         body: JSON.stringify({
             ticker: ticker,
-            quantity: -quantity,
+            amount: -quantity,
             price: price,
         }),
     });
@@ -106,9 +106,4 @@ async function sell_stock(ticker, quantity, price) {
     return data;
 }
 
-export {
-    get_balance,
-    set_balance,
-    buy_stock,
-    sell_stock
-};
+export { get_balance, set_balance };
