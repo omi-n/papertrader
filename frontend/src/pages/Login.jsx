@@ -15,7 +15,7 @@ function Login() {
         //const worked = await is_logged_in();
         //console.log("logged in:", worked);
         //console.log("access token:", get_access_token());
-        navigate("/");
+        navigate("/Profile");
     }
     return(
         <>

@@ -108,5 +108,7 @@ async function sell_stock(ticker, quantity, price) {
 
 export {
     get_balance,
-    set_balance
+    set_balance,
+    buy_stock,
+    sell_stock
 };
