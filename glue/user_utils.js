@@ -88,7 +88,7 @@ async function buy_stock(ticker, quantity, price) {
 async function sell_stock(ticker, quantity, price) {
     const access_token = get_access_token();
     const response = await fetch(`${GLOBAL_BASE_URL}/api/user/stock/`, {
-        method: "DELETE",
+        method: "POST",
         headers: {
             Authorization: `${access_token}`,
             "Content-Type": "application/json",
