@@ -41,7 +41,6 @@ function Buy(){
             navigate("/Profile");
         } catch (error) {
             console.error("Error during purchase:", error.message);
-            setError("Purchase failed. Please try again.");
         }
     };
 
