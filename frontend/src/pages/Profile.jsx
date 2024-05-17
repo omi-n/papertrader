@@ -8,7 +8,6 @@ function Profile() {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [showAddButtons, setShowAddButtons] = useState(false);
-    const [stocks, setStocks] = useState([]);
     const [transactions, setTransactions] = useState([]);
     const navigate = useNavigate();
 
@@ -31,15 +30,12 @@ function Profile() {
                         }
                     }
                     const result = await get_balance();
-                    // get stocks
-                    const s = await get_stocks();
                     // get transactions
                     const t = await get_transactions();
                     if (result.error) {
                         setError("Error fetching balance");
                     } else {
                         setBalanceState(result.balance);
-                        setStocks(s);
                         setTransactions(t);
                     }
                 }
