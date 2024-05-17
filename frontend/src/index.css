@@ -27,6 +27,7 @@ body {
   line-height: 1.5;
   color: #121212;
 }
+
 textarea,
 input,
 button {
@@ -40,6 +41,7 @@ button {
   line-height: 1.5;
   margin: 0;
 }
+
 button {
   color: #3992ff;
   font-weight: 500;
@@ -142,15 +144,6 @@ button:active {
   top: 0.75rem;
 }
 
-@keyframes spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 #sidebar nav {
   flex: 1;
   overflow: auto;
@@ -168,6 +161,7 @@ button:active {
 i {
   color: #818181;
 }
+
 #sidebar nav .active i {
   color: inherit;
 }
