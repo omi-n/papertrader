@@ -38,6 +38,9 @@ export default function Root() {
               <li>
                 <a href={`/Login/`}>Login</a>
               </li>
+              <li>
+                <a href={`/Support/`}>Support</a>
+              </li>
             </ul>) :
           (
             <ul>
@@ -51,7 +54,10 @@ export default function Root() {
               <a href={`/Portfolio/`}>Portfolio</a>
             </li>
             <li>
-              <a href={`/Ticker/`}>Tickers</a>
+              <a href={`/Ticker/`}>Stocks</a>
+            </li>
+            <li>
+              <a href={`/Support/`}>Support</a>
             </li>
             <li>
             <a href={`/Log Out/`}>Log Out</a>

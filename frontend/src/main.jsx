@@ -17,7 +17,7 @@ import {
 import Root from "./routes/root";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import TickerDetails from './pages/TickerDetails.jsx'
-
+import Support from './pages/Support.jsx'
 const router = createBrowserRouter([
   {
     path: "/",
@@ -64,6 +64,10 @@ const router = createBrowserRouter([
       {
         path:"/sell/:tickerSymbol",
         element: <Sell />,
+      },
+      {
+        path: "Support",
+        element: <Support />,
       },
       {
         path: "Log Out",
