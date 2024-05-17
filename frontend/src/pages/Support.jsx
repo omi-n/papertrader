@@ -4,6 +4,7 @@ function Support() {
       <>
       <div>
         <h1>Contact?</h1>
+        Emails go here 
       </div>
       </>
     )

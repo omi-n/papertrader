@@ -33,13 +33,13 @@ export default function Root() {
                 <a href={`/Home/`}>Home</a>
               </li>
               <li>
+                <a href={`/Support/`}>Support</a>
+              </li>
+              <li>
                 <a href={`/Sign Up/`}>Sign Up</a>
               </li>
               <li>
                 <a href={`/Login/`}>Login</a>
-              </li>
-              <li>
-                <a href={`/Support/`}>Support</a>
               </li>
             </ul>) :
           (
