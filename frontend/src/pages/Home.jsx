@@ -8,9 +8,11 @@ function Home() {
 
   return (
     <>
+    <div className="home-container">
       <h1>Paper Trader</h1>
-      <div className="card">
-        <p>Click on Sign Up to get Started, or Login if you have an account!</p>
+    <div className="card">
+        <p>Sign Up To Get Started or Log In If You Already Have An Account!</p>
+      </div>
       </div>
     </>
   )

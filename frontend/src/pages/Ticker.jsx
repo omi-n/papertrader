@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { get_tickers, get_ticker_data } from "../../../glue/yfinance_utils.js";
 import { useNavigate } from "react-router-dom";
+import "./../styles/Ticker.css";
 
 function Ticker() {
     const [allTickers, setAllTickers] = useState([]);
@@ -114,19 +115,19 @@ function Ticker() {
                 <div style={{ display: "flex", flexWrap: "wrap" }}>
                     {searchResults.length > 0 ? (
                         searchResults.map((result, index) => (
-                            <div key={index} style={{ border: "1px solid #ccc", padding: "10px", marginBottom: "10px", width: "calc(33.33% - 20px)", marginRight: "20px" }}>
+                            <div key={index} className={`ticker-card ${index === 9 ? 'center-ticker' : ''}`}>
                                 <div>
                                     <p>Ticker: {result.ticker}</p>
                                     <p>Opening Price: {result.openingPrice !== undefined ? result.openingPrice : "Loading..."}</p>
-                                    <p><button onClick={() => handleBuyClick(ticker.ticker)}>Buy</button></p>
-                                    <p><button onClick={() => handleSellClick(ticker.ticker)}>Sell</button></p>
+                                    <p><button onClick={() => handleBuyClick(result.ticker)}>Buy</button></p>
+                                    <p><button onClick={() => handleSellClick(result.ticker)}>Sell</button></p>
                                     <p><button onClick={() => handleMoreInfoClick(result.ticker)}>More Info</button></p>
                                 </div>
                             </div>
                         ))
                     ) : (
                         tickers.map((ticker, index) => (
-                            <div key={index} style={{ border: "1px solid #ccc", padding: "10px", marginBottom: "10px", width: "calc(33.33% - 20px)", marginRight: "20px" }}>
+                            <div key={index} className={`ticker-card ${index === 9 ? 'center-ticker' : ''}`}>
                                 <div>
                                     <p>Ticker: {ticker.ticker}</p>
                                     <p>Opening Price: {openingPrices[ticker.ticker] !== undefined ? openingPrices[ticker.ticker] : "Loading..."}</p>
@@ -136,9 +137,10 @@ function Ticker() {
                                 </div>
                             </div>
                         ))
-                    )} <div><button onClick={nextPage}>Next Page</button></div>
+                    )}
                 </div>
             ))} 
+            <div><button onClick={nextPage}>Next Page</button></div>
         </div>
     );
 }

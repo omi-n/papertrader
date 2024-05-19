@@ -100,11 +100,9 @@ button:active {
   align-items: center;
   margin: 0;
   padding: 1rem 2rem;
-  border-top: 1px solid #e3e3e3;
-  border-bottom: 1px solid #e3e3e3;
-  border-right: 1px solid #e3e3e3;
   order: 1;
   line-height: 1;
+  border-bottom: 1px solid #e3e3e3;
 }
 
 #sidebar h1::before {

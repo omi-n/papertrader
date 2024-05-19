@@ -12,14 +12,12 @@ function Login() {
     async function handleLogin(e) {
         e.preventDefault();
         const data = await log_in(username, password);
-        //const worked = await is_logged_in();
-        //console.log("logged in:", worked);
-        //console.log("access token:", get_access_token());
+        localStorage.setItem('username', username);
         navigate("/Profile");
     }
     return(
         <>
-        <div>
+        <div className="login-container">
             <h2>Login</h2>
             <form onSubmit={handleLogin}>
                 <input
@@ -37,7 +35,7 @@ function Login() {
                     onChange={(event) => setPassword(event.target.value)}
                     required
                 />
-                <button type="submit" onSubmit={handleLogin}>Login</button>
+                <button type="submit" onSubmit={handleLogin} className="button" >Login</button>
             </form>
         </div>
         </>

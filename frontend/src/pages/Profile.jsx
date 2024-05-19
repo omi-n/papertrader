@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useLocation } from "react-router-dom";
 import { verify_token, refresh_token, is_logged_in, log_out } from "../../../glue/auth_utils";
-import { get_balance, get_transactions, set_balance, get_stocks } from "../../../glue/user_utils";
+import { get_balance, get_transactions, set_balance } from "../../../glue/user_utils";
+import "./../styles/Profile.css";
 
 function Profile() {
     const [balance, setBalanceState] = useState(0);
@@ -10,6 +11,9 @@ function Profile() {
     const [showAddButtons, setShowAddButtons] = useState(false);
     const [transactions, setTransactions] = useState([]);
     const navigate = useNavigate();
+
+    // Retrieve the username from localStorage
+    const username = localStorage.getItem('username');
 
     useEffect(() => {
         const fetchData = async () => {
@@ -30,7 +34,6 @@ function Profile() {
                         }
                     }
                     const result = await get_balance();
-                    // get transactions
                     const t = await get_transactions();
                     if (result.error) {
                         setError("Error fetching balance");
@@ -86,29 +89,30 @@ function Profile() {
 
     return (
         <>
-            <h1>Profile</h1>
+            <h1>Welcome, {username}!</h1>       
             <div>
-                <div>
-                    <span>Current Balance: {balance}</span>
-                    <button onClick={handleToggleAddButtons}>+</button>
-                    {showAddButtons && (
-                        <>
-                            <button onClick={() => handleAddToBalance(10)}>+10</button>
-                            <button onClick={() => handleAddToBalance(100)}>+100</button>
-                            <button onClick={() => handleAddToBalance(1000)}>+1000</button>
-                        </>
-                    )}
+                <div className="balance-container">
+                    <span>Your Current Balance is: {balance}</span>
+                    <button onClick={handleToggleAddButtons} className="round-button">+</button>
                 </div>
-                <button onClick={handleResetBalance}>Reset Balance</button>
+                {showAddButtons && (
+                    <div className="add-buttons-container">
+                        <button onClick={() => handleAddToBalance(10)}>+10</button>
+                        <button onClick={() => handleAddToBalance(100)}>+100</button>
+                        <button onClick={() => handleAddToBalance(1000)}>+1000</button>
+                    </div>
+                )}
+                <div className={showAddButtons ? "reset-button-container show" : "reset-button-container"}>
+                    <button onClick={handleResetBalance}>Reset Balance</button>
+                </div>
             </div>
             {loading && <div>Loading...</div>}
             {error && <div>{error}</div>}
+            <div className="transaction-container">
             <h1>Transactions</h1>
             {transactions.length === 0 ? (
-                // Render this block when there are no transactions
                 <div>No transactions available</div>
             ) : (
-                // Render this block when there are transactions
                 transactions.map((transac, index) => (
                 <div key={index}>
                     {transac.transaction_type === 'buy' ? (<p>You bought {transac.amount} shares of {transac.ticker} priced at ${transac.price} a share.</p>)
@@ -116,6 +120,7 @@ function Profile() {
                 </div>
                 ))
             )}
+            </div>
         </>
     );
 }

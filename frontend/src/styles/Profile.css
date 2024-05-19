@@ -1,0 +1,46 @@
+.round-button {
+/* Make the button round */
+    width: 5px; /* Set the width */
+    height: 10px; /* Set the height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px; /* Adjust the font size if needed */
+    color: white; /* Button text color */
+    border: none; /* Remove border */
+    cursor: pointer; /* Pointer cursor on hover */
+}
+
+/* Style for the Profile heading */
+.profile-heading {
+    font-size: 2rem; /* Adjust the font size to your preference */
+}
+
+/* Style for the balance container */
+.balance-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px; /* Adjust the space between balance text and button */
+}
+
+.add-buttons-container {
+    margin-top: 10px; 
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    gap: 10px; /* Adjust the space between the add buttons */
+}
+
+.reset-button-container {
+    margin-top: 10px; /* Space between the balance container/add buttons and the reset button */
+}
+
+/* Extra spacing when add buttons are shown */
+.reset-button-container.show {
+    margin-top: 20px; /* Increase space when add buttons are visible */
+}
+
+.transaction-container {
+    padding: 200px;
+}

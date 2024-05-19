@@ -1,0 +1,15 @@
+.ticker-card {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: calc(33.33% - 20px);
+    margin-right: 20px;
+}
+
+.center-ticker {
+    width: 31.5%; /* Make the ticker card take full width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 363px; /* Reset the margin */
+}
