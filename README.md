@@ -42,10 +42,12 @@ To install Docker, please refer to the docker getting started documentation.
 
 Building the docker containers:
 `docker build -f frontend.Dockerfile -t frontend-testing .`
+
 `docker build -f backend.Dockerfile -t backend-testing .`
 
 Running them detached:
 `docker run -dp 127.0.0.1:3000:3000 frontend-testing`
+
 `docker run -dp 127.0.0.1:8000:8000 backend-testing`
 
 
