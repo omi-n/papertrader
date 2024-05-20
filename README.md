@@ -40,6 +40,13 @@ To install Docker, please refer to the docker getting started documentation.
 
 ### Instructions
 
+The easiest way to get this server running is through docker-compose:
+
+`sudo docker compose build && sudo docker compose up`
+
+
+**ALTERNATIVELY,**
+
 Building the docker containers:
 
 `docker build -f frontend.Dockerfile -t frontend-testing .`

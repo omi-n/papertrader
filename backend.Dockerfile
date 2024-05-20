@@ -26,4 +26,4 @@ RUN python3 populate_tickers.py --max_stocks 100
 
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
 
-EXPOSE 8000/tcp
+EXPOSE 8000
