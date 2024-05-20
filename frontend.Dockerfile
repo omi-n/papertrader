@@ -12,6 +12,6 @@ WORKDIR /app/frontend
 
 RUN npm run build
 
-CMD ["npx", "vite", "serve", "--port", "3000"]
+CMD ["npx", "vite", "serve", "--host", "--port", "3000"]
 
 EXPOSE 3000

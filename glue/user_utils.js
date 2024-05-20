@@ -1,6 +1,6 @@
 import { get_access_token } from "./auth_utils.js";
 
-const GLOBAL_BASE_URL = "http://localhost:8000";
+import { GLOBAL_BASE_URL } from "./base.js";
 
 async function get_balance() {
     const access_token = get_access_token();
@@ -106,4 +106,11 @@ async function sell_stock(ticker, quantity, price) {
     return data;
 }
 
-export { get_balance, set_balance, buy_stock, sell_stock, get_stocks, get_transactions };
+export {
+    get_balance,
+    set_balance,
+    buy_stock,
+    sell_stock,
+    get_stocks,
+    get_transactions,
+};

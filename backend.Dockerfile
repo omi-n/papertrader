@@ -3,9 +3,6 @@ FROM ubuntu:20.04
 # install tmux
 RUN apt-get update && apt-get install -y tmux
 
-# install curl
-RUN apt-get update && apt-get install -y curl unzip
-
 # setup backend
 WORKDIR /app
 
@@ -23,6 +20,10 @@ RUN python3 manage.py makemigrations
 
 RUN python3 manage.py migrate
 
+RUN tmux new-session -d -s "backend" "python3 manage.py runserver"
+
+RUN python3 populate_tickers.py --max_stocks 100
+
 CMD ["python3", "manage.py", "runserver", "0.0.0.0:8000"]
 
-EXPOSE 8000
+EXPOSE 8000/tcp

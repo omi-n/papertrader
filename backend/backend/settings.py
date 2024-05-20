@@ -48,12 +48,16 @@ INSTALLED_APPS = [
 
 CORS_URLS_REGEX = r"^.*$"
 
-CORS_ALLOW_HEADERS = (*default_headers, "Access-Control-Allow-Origin")
+CORS_ALLOW_HEADERS = default_headers + ("Access-Control-Allow-Origin",)
 
 CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://127.0.0.1:5173",
     "http://localhost:3000",
     "http://127.0.0.1:3000",
 ]
+
+# CORS_ALLOW_ALL_ORIGINS = True
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
