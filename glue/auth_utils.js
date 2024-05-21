@@ -5,7 +5,7 @@ import {
     setCookie,
 } from "./cookie_utils.js";
 
-const GLOBAL_BASE_URL = "http://localhost:8000";
+import { GLOBAL_BASE_URL } from "./base.js";
 
 /* -------------------------------------------------------------------------- */
 // TOKEN UTILS

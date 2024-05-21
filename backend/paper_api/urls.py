@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.urls import path, include
-from paper_api.views import (
+from paper_api.controllers import (
     TickerViewSet,
     TickerView,
     APIsView,
