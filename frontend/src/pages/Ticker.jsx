@@ -146,8 +146,7 @@ function Ticker() {
                     )}
                 </div>
             ))} 
-            {searchResults.length === 0 && <div><button onClick={nextPage}>Next Page</button></div>}
-            {searchResults.length > 0 && <div><button onClick={handleReturnToAllStocks}>Return to All Stocks</button></div>}
+            {searchResults.length >= 0 && <div><button onClick={handleReturnToAllStocks}>Return to All Stocks</button></div>}
         </div>
     );
 }
