@@ -7,9 +7,25 @@
 }
 
 .center-ticker {
-    width: 31.5%; /* Make the ticker card take full width */
+    width: 31.5%;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-left: 363px; /* Reset the margin */
+    margin-left: calc((100% - 31.5%) / 2); /* Center the card */
+}
+
+.ticker-card-search {
+    border: 1px solid #ccc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: calc(100% - 10px); /* Adjust for padding and border */
+    margin-left: calc((100% - calc(100% - 40px)) / 2); /* Center the card */
+    margin-right: 20px;
+}
+
+.h {
+    font-size: 50px; /* Adjust the font size as needed */
 }

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { get_ticker_data, get_ticker_data_timeframe, get_ticker_financials } from "../../../glue/yfinance_utils.js";
+import { get_ticker_data } from "../../../glue/yfinance_utils.js";
+import "./../styles/TickerDetails.css";
+import { useNavigate } from "react-router-dom";
+
 function TickerDetails() {
     const { tickerSymbol } = useParams(); // Get the ticker symbol from the URL params
     const [tickerData, setTickerData] = useState(null);
@@ -10,7 +13,8 @@ function TickerDetails() {
     const [high, setHigh] = useState(0);
     const [low, setLow] = useState(0);
     const [volume, setVolume] = useState(0);
-    
+    const navigate = useNavigate(); // Hook for navigation
+
     useEffect(() => {
         const fetchTickerData = async () => {
             try {
@@ -30,6 +34,14 @@ function TickerDetails() {
         fetchTickerData();
     }, [tickerSymbol]);
 
+    const handleBuyClick = () => {
+        navigate(`/buy/${tickerSymbol}`);
+    };
+
+    const handleSellClick = () => {
+        navigate(`/sell/${tickerSymbol}`);
+    };
+
     if (loading) {
         return <div>Loading...</div>;
     }
@@ -38,15 +50,18 @@ function TickerDetails() {
         return <div>Error: {error}</div>;
     }
 
-    console.log(tickerData);
     return (
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
             <h1>Ticker Details for {tickerSymbol}</h1>
-            <div style={{ border: "1px solid #ccc", padding: "10px", marginBottom: "10px", width: "calc(33.33% - 20px)" }}>
-                <p>Opening Price = ${openingPrice} per share</p>
-                <p>High = ${high}</p>
-                <p>Low = ${low}</p>
+            <div className="details-card">
+                <p>Opening Price = ${openingPrice.toFixed(2)} per share</p>
+                <p>High = ${high.toFixed(2)}</p>
+                <p>Low = ${low.toFixed(2)}</p>
                 <p>Volume = {volume}</p>
+                <div>
+                    <button onClick={handleBuyClick} style={{ marginRight: "10px" }}>Buy</button>
+                    <button onClick={handleSellClick} style={{ marginLeft: "10px" }}>Sell</button>
+                </div>
             </div>
         </div>
     );

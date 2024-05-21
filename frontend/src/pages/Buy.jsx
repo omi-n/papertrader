@@ -3,6 +3,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { get_ticker_data, get_ticker_data_timeframe, get_ticker_financials } from "../../../glue/yfinance_utils.js";
 import { get_balance, set_balance } from "../../../glue/user_utils";
 import { buy_stock } from "../../../glue/user_utils"
+import "./../styles/Buy.css";
 
 function Buy(){
     const { tickerSymbol } = useParams(); // Get the ticker symbol from the URL params
@@ -44,15 +45,11 @@ function Buy(){
         }
     };
 
-    //console.log("data:", tickerData);
-    //console.log(tickerSymbol);
     return (
-        <div>
-            {/* Put this shit in a box or something */}
-            <h1>Buying a {tickerSymbol}</h1>
+        <div className="buy-container">
+            <h1>Buying {tickerSymbol}</h1>
             <span>Your Current Balance: ${balance}</span>
-            {/* Example: Display historical data, charts, company information, etc. */}
-            <p>Opening Price = ${openingPrice} per share</p>
+            <p>Opening Price = ${openingPrice.toFixed(2)} per share</p>
             <form onSubmit={handlePurchase}>
                 <input
                     type="number" min="0"

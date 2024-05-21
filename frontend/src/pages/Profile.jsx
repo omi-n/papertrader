@@ -12,7 +12,6 @@ function Profile() {
     const [transactions, setTransactions] = useState([]);
     const navigate = useNavigate();
 
-    // Retrieve the username from localStorage
     const username = localStorage.getItem('username');
 
     useEffect(() => {
@@ -89,7 +88,7 @@ function Profile() {
 
     return (
         <>
-            <h1>Welcome, {username}!</h1>       
+            <h1 className="h">Welcome, {username}!</h1>       
             <div>
                 <div className="balance-container">
                     <span>Your Current Balance is: {balance}</span>

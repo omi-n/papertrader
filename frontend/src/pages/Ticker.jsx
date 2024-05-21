@@ -88,7 +88,7 @@ function Ticker() {
     };
 
     const handleMoreInfoClick = (ticker) => {
-        navigate(`/tickerdetails/${ticker}`); // force navigate to the ticker details
+        navigate(`/tickerdetails/${ticker}`);
     };
 
     const handleBuyClick = (ticker) => {
@@ -99,9 +99,15 @@ function Ticker() {
         navigate(`/sell/${ticker}`);
     };
 
+    const handleReturnToAllStocks = () => {
+        setSearchQuery('');
+        setSearchResults([]);
+        setSearchError('');
+    };
+
     return (
         <div>
-            <h1>Stocks</h1>
+            <h1 className="h">Stocks</h1>
             <div>
                 <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Enter ticker symbol" />
                 <button onClick={handleSearch}>Search</button>
@@ -115,10 +121,10 @@ function Ticker() {
                 <div style={{ display: "flex", flexWrap: "wrap" }}>
                     {searchResults.length > 0 ? (
                         searchResults.map((result, index) => (
-                            <div key={index} className={`ticker-card ${index === 9 ? 'center-ticker' : ''}`}>
+                            <div key={index} className={`ticker-card${searchResults.length > 0 ? '-search' : ''} ${index === 9 ? 'center-ticker' : ''}`}>
                                 <div>
                                     <p>Ticker: {result.ticker}</p>
-                                    <p>Opening Price: {result.openingPrice !== undefined ? result.openingPrice : "Loading..."}</p>
+                                    <p>Opening Price: {result.openingPrice !== undefined ? (result.openingPrice).toFixed(2) : "Loading..."}</p>
                                     <p><button onClick={() => handleBuyClick(result.ticker)}>Buy</button></p>
                                     <p><button onClick={() => handleSellClick(result.ticker)}>Sell</button></p>
                                     <p><button onClick={() => handleMoreInfoClick(result.ticker)}>More Info</button></p>
@@ -130,7 +136,7 @@ function Ticker() {
                             <div key={index} className={`ticker-card ${index === 9 ? 'center-ticker' : ''}`}>
                                 <div>
                                     <p>Ticker: {ticker.ticker}</p>
-                                    <p>Opening Price: {openingPrices[ticker.ticker] !== undefined ? openingPrices[ticker.ticker] : "Loading..."}</p>
+                                    <p>Opening Price: {openingPrices[ticker.ticker] !== undefined ? (openingPrices[ticker.ticker]).toFixed(2) : "Loading..."}</p>
                                     <p><button onClick={() => handleBuyClick(ticker.ticker)}>Buy</button></p>
                                     <p><button onClick={() => handleSellClick(ticker.ticker)}>Sell</button></p>
                                     <p><button onClick={() => handleMoreInfoClick(ticker.ticker)}>More Info</button></p>
@@ -140,7 +146,8 @@ function Ticker() {
                     )}
                 </div>
             ))} 
-            <div><button onClick={nextPage}>Next Page</button></div>
+            {searchResults.length === 0 && <div><button onClick={nextPage}>Next Page</button></div>}
+            {searchResults.length > 0 && <div><button onClick={handleReturnToAllStocks}>Return to All Stocks</button></div>}
         </div>
     );
 }
