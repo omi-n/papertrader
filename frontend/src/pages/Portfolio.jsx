@@ -88,7 +88,7 @@ function Portfolio() {
                 uniqueStocksArray.map((stock, index) => (
                     <div key={index}>
                         <p>{stock.ticker}: {stock.count} shares owned </p>
-                        <p>Total Value: {(stock.openingPrice * stock.count).toFixed(2)}</p> {/* Calculate total value */}
+                        <p>Total Value: ${(stock.openingPrice * stock.count).toFixed(2)}</p> {/* Calculate total value */}
                     </div>
                 ))
             )}
