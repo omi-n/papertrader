@@ -17,17 +17,19 @@ function Login() {
     }
     return(
         <>
-        <div className="login-container">
+        <div className="container-fluid">
             <h2>Login</h2>
             <form onSubmit={handleLogin}>
+                <div className="mb-3">
                 <input
-                    // change to username 
                     type="text" 
                     placeholder="Enter Username"
                     value={username}
                     onChange={(event) => setUsername(event.target.value)}
                     required
                 />
+                </div>
+                <div className="mb-3">
                 <input
                     type="password" 
                     placeholder="Enter password"
@@ -35,6 +37,7 @@ function Login() {
                     onChange={(event) => setPassword(event.target.value)}
                     required
                 />
+                </div>
                 <button type="submit" onSubmit={handleLogin} className="button" >Login</button>
             </form>
         </div>

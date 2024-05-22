@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { get_tickers, get_ticker_data } from "../../../glue/yfinance_utils.js";
 import { useNavigate } from "react-router-dom";
 import "./../styles/Ticker.css";
+import { Button } from "bootstrap";
 
 function Ticker() {
     const [allTickers, setAllTickers] = useState([]);
@@ -108,7 +109,7 @@ function Ticker() {
     return (
         <div>
             <h1 className="h">Stocks</h1>
-            <div>
+            <div className="container-fluid">
                 <input type="text" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} placeholder="Enter ticker symbol" />
                 <button onClick={handleSearch}>Search</button>
             </div>
@@ -146,7 +147,9 @@ function Ticker() {
                     )}
                 </div>
             ))} 
-            {searchResults.length >= 0 && <div><button onClick={handleReturnToAllStocks}>Return to All Stocks</button></div>}
+            {!loading && !error && !searchError && <div><button onClick={nextPage}>Next Page</button></div>}
+            {searchResults.length > 0 && <div><button onClick={handleReturnToAllStocks}>Return to All Stocks</button></div>}
+            {searchResults.length == 0 && <div><button onClick={handleReturnToAllStocks}>Return to All Stocks</button></div>}
         </div>
     );
 }

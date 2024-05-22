@@ -39,7 +39,7 @@ function Portfolio() {
             }
         };
         fetchData();
-    }, [navigate]);
+    }, []);
 
     useEffect(() => {
         const fetchOpeningPrices = async () => {
@@ -81,14 +81,12 @@ function Portfolio() {
         <>
             <h1 className="h">Portfolio</h1>
             {stocks.length === 0 ? (
-                // Render this block when there are no transactions
                 <div>No Stocks available</div>
             ) : (
-                // Render this block when there are transactions
                 uniqueStocksArray.map((stock, index) => (
                     <div key={index}>
                         <p>{stock.ticker}: {stock.count} shares owned </p>
-                        <p>Total Value: ${(stock.openingPrice * stock.count).toFixed(2)}</p> {/* Calculate total value */}
+                        <p>Total Value: ${(stock.openingPrice * stock.count).toFixed(2)}</p>
                     </div>
                 ))
             )}

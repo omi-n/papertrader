@@ -18,6 +18,12 @@ import Root from "./routes/root";
 import ErrorPage from "./pages/ErrorPage.jsx";
 import TickerDetails from './pages/TickerDetails.jsx'
 import Support from './pages/Support.jsx'
+
+// Bootstrap CSS
+import "bootstrap/dist/css/bootstrap.min.css";
+// Bootstrap Bundle JS
+import "bootstrap/dist/js/bootstrap.bundle.min";
+
 const router = createBrowserRouter([
   {
     path: "/",

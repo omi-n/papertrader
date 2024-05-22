@@ -64,9 +64,11 @@ function Sell(){
             {amount === 0 ? (
                 <div>You have not purchased any of these shares.</div>
             ) : (
+                <div className="container-fluid">
                 <form onSubmit={handleSale}>
-                    <p>You own {amount} shares of {tickerSymbol}</p>
-                    <p>Current Opening Price = ${openingPrice} per share</p>
+                    <h2>You own {amount} shares of {tickerSymbol}</h2>
+                    <p>Current Opening Price = ${openingPrice.toFixed(2)} per share</p>
+                    <div className="mb-3">
                     <input
                         type="number" min="0" max={amount}
                         placeholder="0"
@@ -74,8 +76,10 @@ function Sell(){
                         onChange={(event) => setShares(event.target.value)}
                         required
                     />
-                    <button type="submit">Sell Shares at ${openingPrice} each</button>
+                    </div>
+                    <button type="submit">Sell Shares at ${openingPrice.toFixed(2)} each</button>
                 </form>
+                </div>
                 )}
         </div>
     );

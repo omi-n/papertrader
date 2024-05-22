@@ -48,9 +48,10 @@ function Buy(){
     return (
         <div className="buy-container">
             <h1>Buying {tickerSymbol}</h1>
-            <span>Your Current Balance: ${balance}</span>
+            <span>Your Current Balance: ${balance.toFixed(2)}</span>
             <p>Opening Price = ${openingPrice.toFixed(2)} per share</p>
             <form onSubmit={handlePurchase}>
+                <div className="mb-3">
                 <input
                     type="number" min="0"
                     placeholder="0"
@@ -58,6 +59,7 @@ function Buy(){
                     onChange={(event) => setShares(event.target.value)}
                     required
                 />
+                </div>
                 <button type="submit">Purchase Shares</button>
             </form>
         </div>

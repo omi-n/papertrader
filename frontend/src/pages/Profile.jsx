@@ -91,7 +91,7 @@ function Profile() {
             <h1 className="h">Welcome, {username}!</h1>       
             <div>
                 <div className="balance-container">
-                    <span>Your Current Balance is: {balance}</span>
+                    <span>Your Current Balance is: ${balance.toFixed(2)}</span>
                     <button onClick={handleToggleAddButtons} className="round-button">+</button>
                 </div>
                 {showAddButtons && (
@@ -114,8 +114,8 @@ function Profile() {
             ) : (
                 transactions.map((transac, index) => (
                 <div key={index}>
-                    {transac.transaction_type === 'buy' ? (<p>You bought {transac.amount} shares of {transac.ticker} priced at ${transac.price} a share.</p>)
-                    : (<p>You sold {transac.amount} shares of {transac.ticker} at ${transac.price} a share.</p>)}
+                    {transac.transaction_type === 'buy' ? (<p>You bought {transac.amount} shares of {transac.ticker} priced at ${transac.price.toFixed(2)} a share.</p>)
+                    : (<p>You sold {transac.amount} shares of {transac.ticker} at ${transac.price.toFixed(2)} a share.</p>)}
                 </div>
                 ))
             )}
