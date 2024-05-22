@@ -9,7 +9,8 @@ function Register() {
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleSignup = async () => {
+  const handleSignup = async (e) => {
+    e.preventDefault();
     const data = await sign_up(username, password, email);
     navigate("/Login");
   };
